@@ -30,6 +30,9 @@ cp config.example.ts config.ts
 # если команда setfacl не найдена, надо установить "acl" через apt
 chmod 777 $(find . -type d)
 setfacl -dm u::rwx,g::rwx,o::rwx $(find . -type d)
+
+# дадим правильно права файлу без которого не запустится ничего.
+chmod +x gameserver-entrypoint.sh
 ```
 
 # Работа

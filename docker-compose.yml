@@ -19,7 +19,7 @@ services:
     volumes:
       - ./docker/runtime-data/mysql:/var/lib/mysql
     ports:
-      - '3306:3306'
+      - '3307:3306'
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '--silent']
       interval: 2s

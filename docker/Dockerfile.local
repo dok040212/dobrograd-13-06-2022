@@ -51,14 +51,14 @@ RUN ./steamcmd/steamcmd.sh \
 	+force_install_dir /home/container/gameserver \
 	+login anonymous +app_update 4020 \
 	-validate \
-	-beta NONE \
 	+quit
 
 FROM install-gameserver AS setup-gameserver
-RUN curl -o ./luabin.zip https://cloud.octo.gg/s/oKHm9xXjcLDXwpf/download \
-	&& mkdir -p ./gameserver/garrysmod/lua/bin \
-	&& unzip -j ./luabin.zip -d ./gameserver/garrysmod/lua/bin \
-	&& rm ./luabin.zip
+RUN curl -L -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36" \
+         -o ./luabin.zip "https://cloud.octo.gg/s/oKHm9xXjcLDXwpf/download?download=1" && \
+    mkdir -p ./gameserver/garrysmod/lua/bin && \
+    unzip -j ./luabin.zip -d ./gameserver/garrysmod/lua/bin && \
+    rm ./luabin.zip
 
 RUN curl -o ./content.zip -L https://www.dropbox.com/s/al7ruvnda4m8qgf/content.zip?dl=1 \
 	&& mkdir -p ./content/cstrike \
